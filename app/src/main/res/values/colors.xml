@@ -24,4 +24,10 @@
     <color name="red">#F44336</color>
     <color name="charcoal">#36454F</color>
     <color name="neongreen">#0FFF50</color>
+
+    <color name="cyan_200">#80DEEA</color>
+    <color name="lightblue_400">#29B6F6</color>
+    <color name="cyan_100">#B2EBF2</color>
+    <color name="lightblue_300">#4FC3F7</color>
+    <color name="limea_400">#C6FF00</color>
 </resources>

@@ -134,6 +134,7 @@ public class PrivateChatActivity extends AppCompatActivity {
                                 .setValue(message).addOnCompleteListener(task1 -> {
                                     edittext_privatechat.requestFocus();
                                     edittext_privatechat.setText("");
+                                    recyclerView_privatechat.smoothScrollToPosition(messageList.size());
                                     Toast.makeText(this,
                                             "message sent successfully",
                                             Toast.LENGTH_SHORT).show();
