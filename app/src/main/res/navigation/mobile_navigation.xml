@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.educationforeveryone.ui.message.MessageListFragment"
+        android:name="com.example.educationforeveryone.ui.message.ChatsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_message_list" />
+        tools:layout="@layout/fragment_chats" />
 </navigation>
