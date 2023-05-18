@@ -1,31 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:background="@drawable/shape_course_item"
+    android:orientation="vertical"
+    android:layout_marginBottom="-50dp"
 
-    <TextView
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="60dp"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/recyclerViewUserLessonText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:text="lesson"
+        android:textColor="@color/bluegray_800"
         android:textSize="20sp"
-        android:text="lesson"></TextView>
+        android:textStyle="bold|italic"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/recyclerViewUserYearText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:textSize="20sp"
-        android:text="class"></TextView>
-    <TextView
+        android:textColor="@color/bluegray_800"
+        android:textStyle="bold|italic"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="class"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewUserLessonText"
+
+        />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/recyclerViewUserEmailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:textSize="20sp"
-        android:text="email"></TextView>
+        android:textColor="@color/bluegray_800"
+        android:textStyle="bold|italic"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewUserYearText"
+        />
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

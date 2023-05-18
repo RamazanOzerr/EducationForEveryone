@@ -30,4 +30,10 @@
     <color name="cyan_100">#B2EBF2</color>
     <color name="lightblue_300">#4FC3F7</color>
     <color name="limea_400">#C6FF00</color>
+    <color name="bluegray_200">#B0BEC5</color>
+    <color name="bluegray_800">#37474F</color>
+    <color name="bluegray_100">#CFD8DC</color>
+    <color name="bluegray_50">#ECEFF1</color>
+    <color name="gray_400">#9E9E9E</color>
+    <color name="my_Color1">#455A64</color>
 </resources>

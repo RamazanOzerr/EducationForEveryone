@@ -43,9 +43,10 @@ public class CourseListFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         getData();
-        binding.courseRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerViewChatsFragment.setLayoutManager(new LinearLayoutManager(getContext()));
+
         coursePostAdapter = new CoursePostAdapter(courseListe);
-        binding.courseRecyclerView.setAdapter(coursePostAdapter);
+        binding.recyclerViewChatsFragment.setAdapter(coursePostAdapter);
         return root;
     }
 
