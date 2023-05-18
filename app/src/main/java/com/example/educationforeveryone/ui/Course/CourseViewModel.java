@@ -4,16 +4,21 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.educationforeveryone.ui.message.ChatRepository;
+
+import java.util.List;
+
 public class CourseViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private final MutableLiveData<List<CourseModel>> liveData;
+
 
     public CourseViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+
+        CourseRepository repository = new CourseRepository();
+        liveData = repository.getCourses();
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+    public MutableLiveData<List<CourseModel>> getCourses() {return liveData;}
+
 }
