@@ -36,4 +36,10 @@
     <color name="bluegray_50">#ECEFF1</color>
     <color name="gray_400">#9E9E9E</color>
     <color name="my_Color1">#455A64</color>
+
+    <color name="baby_blue">#D4F1F4</color>
+    <color name="blue_green">#75E6DA</color>
+    <color name="blue_gorotto">#189AB4</color>
+    <color name="navy_blue">#05445E</color>
+
 </resources>
