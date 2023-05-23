@@ -1,6 +1,5 @@
-package com.example.educationforeveryone.ui.message;
+package com.example.educationforeveryone.ui.Chats;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 

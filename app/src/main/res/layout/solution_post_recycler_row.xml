@@ -11,11 +11,11 @@
         android:layout_margin="5dp"
         android:textSize="20sp"
         android:text="usermail text"
-        ></TextView>
+        />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="250dp"
-        android:layout_gravity="center"></ImageView>
+        android:layout_gravity="center"/>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.educationforeveryone.ui.message;
+package com.example.educationforeveryone.ui.Chats;
 
 public class ChatModel {
 

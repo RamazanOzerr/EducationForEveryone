@@ -1,4 +1,4 @@
-package com.example.educationforeveryone.ui.message;
+package com.example.educationforeveryone.ui.Chats;
 
 import android.app.Activity;
 import android.content.Context;

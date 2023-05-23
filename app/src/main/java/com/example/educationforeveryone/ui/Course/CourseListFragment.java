@@ -4,32 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.educationforeveryone.databinding.FragmentCourseListBinding;
-import com.example.educationforeveryone.ui.Adapter.CoursePostAdapter;
-import com.example.educationforeveryone.ui.Post.Course;
-import com.example.educationforeveryone.ui.message.ChatsViewModel;
-import com.example.educationforeveryone.ui.question.QuestionViewModel;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CourseListFragment extends Fragment {
 
@@ -44,15 +28,11 @@ public class CourseListFragment extends Fragment {
         View root = binding.getRoot();
         CourseViewModel courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
         init();
-       courseViewModel.getCourses().observe(getViewLifecycleOwner(), new Observer<List<CourseModel>>() {
-           @Override
-           public void onChanged(List<CourseModel> courseModels) {
-               courseList.clear();
-               courseList.addAll(courseModels);
-               courseAdapter = new CourseAdapter(courseList);
-                binding.recyclerViewChatsFragment.setAdapter(courseAdapter);
-
-           }
+       courseViewModel.getCourses().observe(getViewLifecycleOwner(), courseModels -> {
+           courseList.clear();
+           courseList.addAll(courseModels);
+           courseAdapter = new CourseAdapter(courseList, getActivity(), getContext());
+            binding.recyclerViewChatsFragment.setAdapter(courseAdapter);
        });
 
         return root;

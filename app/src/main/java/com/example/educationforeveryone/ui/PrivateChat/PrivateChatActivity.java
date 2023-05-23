@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.educationforeveryone.R;
+import com.example.educationforeveryone.ui.UserProfile.UserProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -46,6 +49,7 @@ public class PrivateChatActivity extends AppCompatActivity {
 
     private MessageAdapter adapter;
     private List<MessageModel> messageList;
+    private LinearLayout linear_privatechat;
 
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
@@ -71,6 +75,7 @@ public class PrivateChatActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<MessageModel> messageModels) {
                 updateData(messageModels);
+
 //                progress.dismiss();
             }
         });
@@ -86,7 +91,7 @@ public class PrivateChatActivity extends AppCompatActivity {
 //        System.out.println("models: "+messageModels.get(1).toString());
         adapter = new MessageAdapter(messageList, currUser);
         recyclerView_privatechat.setAdapter(adapter);
-
+        recyclerView_privatechat.smoothScrollToPosition(messageList.size());
 
     }
 
@@ -109,6 +114,7 @@ public class PrivateChatActivity extends AppCompatActivity {
         recyclerView_privatechat = findViewById(R.id.recyclerView_privatechat);
         edittext_privatechat = findViewById(R.id.edittext_privatechat);
         image_send_privatechat = findViewById(R.id.image_send_privatechat);
+        linear_privatechat = findViewById(R.id.linear_privatechat);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView_privatechat.setLayoutManager(layoutManager);
@@ -164,6 +170,11 @@ public class PrivateChatActivity extends AppCompatActivity {
                         "you cannot send an empty message",Toast.LENGTH_SHORT).show();
             }
 
+        });
+
+        linear_privatechat.setOnClickListener(view -> {
+            startActivity(new Intent(this, UserProfileActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 

@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.educationforeveryone.ui.Course.CreateCourseActivity;
-import com.example.educationforeveryone.ui.question.UploadQuestionActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -47,31 +46,31 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.option_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.option_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.add_question){
-            Intent intentToAddQuestion = new Intent(MainActivity.this, UploadQuestionActivity.class);
-            startActivity(intentToAddQuestion);
-
-        }else if (item.getItemId() == R.id.create_course){
-            Intent intentToCreateCourse = new Intent(MainActivity.this, CreateCourseActivity.class);
-            startActivity(intentToCreateCourse);
-
-        }else if (item.getItemId() == R.id.sign_out){
-            auth.signOut();
-            Intent intentToLogin = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intentToLogin);
-            finish();
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if (item.getItemId() == R.id.add_question){
+//            Intent intentToAddQuestion = new Intent(MainActivity.this, UploadQuestionActivity.class);
+//            startActivity(intentToAddQuestion);
+//
+//        }else if (item.getItemId() == R.id.create_course){
+//            Intent intentToCreateCourse = new Intent(MainActivity.this, CreateCourseActivity.class);
+//            startActivity(intentToCreateCourse);
+//
+//        }else if (item.getItemId() == R.id.sign_out){
+//            auth.signOut();
+//            Intent intentToLogin = new Intent(MainActivity.this, LoginActivity.class);
+//            startActivity(intentToLogin);
+//            finish();
+//        }
+//
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }

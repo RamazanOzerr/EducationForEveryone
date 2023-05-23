@@ -1,21 +1,23 @@
 package com.example.educationforeveryone.ui.Course;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.educationforeveryone.R;
-import com.example.educationforeveryone.ui.message.ChatAdapter;
+import com.example.educationforeveryone.ui.CourseInfo.CourseInfoActivity;
+import com.example.educationforeveryone.ui.UserProfile.UserProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.grpc.Context;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder> {
 
@@ -27,11 +29,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
 
     Activity activity;
 
-    Context context;
+    android.content.Context context;
 
-    public CourseAdapter(List<CourseModel> courseModelList) {
+    public CourseAdapter(List<CourseModel> courseModelList, Activity activity, Context context) {
         this.courseModelList = courseModelList;
         courseModelListFull = new ArrayList<>(courseModelList);
+        this.activity = activity;
+        this.context = context;
     }
 
     @NonNull
@@ -50,7 +54,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
     holder.text_view_lesson.setText(courseModelList.get(position).getLesson_str());
     holder.text_view_class.setText(courseModelList.get(position).getClass_str());
 
-
+    holder.constraint_course_item.setOnClickListener(view1 -> {
+        activity.startActivity(new Intent(context, CourseInfoActivity.class));
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    });
 
     }
 
@@ -61,13 +68,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
 
     public static class Viewholder extends RecyclerView.ViewHolder {
 
-        private AppCompatTextView text_view_lesson,text_view_email,text_view_class ;
+        private final AppCompatTextView text_view_lesson,text_view_email,text_view_class;
+        private final ConstraintLayout constraint_course_item;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             text_view_class = itemView.findViewById(R.id.recyclerViewUserYearText);
             text_view_lesson = itemView.findViewById(R.id.recyclerViewUserLessonText);
             text_view_email = itemView.findViewById(R.id.recyclerViewUserEmailText);
+            constraint_course_item = itemView.findViewById(R.id.constraint_course_item);
         }
 
 

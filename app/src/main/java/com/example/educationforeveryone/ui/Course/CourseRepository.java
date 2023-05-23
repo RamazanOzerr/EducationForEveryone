@@ -2,9 +2,6 @@ package com.example.educationforeveryone.ui.Course;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.educationforeveryone.ui.message.ChatModel;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.ArrayList;
 import java.util.List;
 

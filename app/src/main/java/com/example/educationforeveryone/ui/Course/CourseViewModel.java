@@ -1,10 +1,7 @@
 package com.example.educationforeveryone.ui.Course;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import com.example.educationforeveryone.ui.message.ChatRepository;
 
 import java.util.List;
 
