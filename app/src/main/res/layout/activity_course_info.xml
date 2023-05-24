@@ -1,115 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/babyblue"
-    tools:context=".LoginActivity">
-    <!--todo context değiştir-->
+    android:background="@color/white"
+    tools:context=".ui.UserProfile.UserProfileActivity">
 
-
-    <ImageView
-        android:id="@+id/p_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="30dp"
-        android:src="@mipmap/ic_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/textUserName"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
-        android:text="Course Name"
-        android:textColor="@color/blue_toolbar"
-        android:textColorHint="@color/blue_toolbar"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/p_image"
-        app:layout_constraintStart_toStartOf="@id/p_image"
-        app:layout_constraintTop_toBottomOf="@+id/p_image"
+        >
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_show_course_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/baby_blue"
+            app:title="Course İnfo"
+            app:titleTextColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        />
-
-    <TextView
-        android:id="@+id/textBio"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="68dp"
-        android:lines="5"
-        android:maxHeight="300dp"
-        android:minHeight="100dp"
-        android:text="about Course"
-        android:textColor="@color/blue_toolbar"
-        android:textColorHint="@color/blue_toolbar"
-        android:textSize="22sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textUserName" />
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/shape_course_show"
+        android:paddingTop="10dp"
+        android:paddingBottom="50dp"
+        android:paddingHorizontal="10dp"
+        android:layout_marginHorizontal="10dp"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Fatih Terim"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
 
-    <Button
-        android:id="@+id/likeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/blue_toolbar"
-        android:text="LIKE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/msgBtn"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/textBio"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_bio_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_course_name"
+            android:text="Türkiyenin en taşaklı teknik direktörü"
+            android:textSize="18sp"
+            android:textColor="@color/black"
 
-    <Button
-        android:id="@+id/msgBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/blue_toolbar"
-        android:text="MESSAGE"
-        app:layout_constraintStart_toEndOf="@+id/likeBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBio"
-        android:visibility="gone"
-        />
+            android:layout_marginTop="20dp"
+            />
 
 
-    <ImageView
-        android:id="@+id/msgImageBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="72dp"
-        android:background="@android:color/transparent"
-        android:src="@mipmap/ic_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/likeImageBtn"
-        app:layout_constraintTop_toBottomOf="@+id/textBio">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_classes_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_bio_course"
+            android:text="italyanca, futbol, Galatasaray, am"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            />
 
-    </ImageView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/text_time_course"
+            app:layout_constraintTop_toBottomOf="@+id/text_classes_course"
+            android:text="@string/button_send_message"
+            android:backgroundTint="@color/electricblue"
+            android:layout_marginTop="60dp"
+            />
 
-    <ImageView
-        android:id="@+id/likeImageBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="72dp"
-        android:background="@android:color/transparent"
-        android:src="@mipmap/ic_add_friend"
-        app:layout_constraintEnd_toStartOf="@id/msgImageBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBio">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_show_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/text_time_course"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_classes_course"
+            android:text="@string/button_show_profile"
+            android:backgroundTint="#2AE1EA"
+            android:layout_marginTop="60dp"
 
-    </ImageView>
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_time_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="70dp"
+            android:text="10:00 PM"
+            android:textColor="@color/gray_400"
+            android:textSize="12sp"
+            android:textStyle="italic|bold"
+            app:layout_constraintStart_toEndOf="@id/button_send_message"
+            app:layout_constraintTop_toBottomOf="@id/text_classes_course" />
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/button_logout"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button_save"-->
+        <!--            android:text="@string/button_logout"-->
+        <!--            android:backgroundTint="@color/blue_green"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            />-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

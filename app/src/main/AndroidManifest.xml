@@ -26,7 +26,10 @@
             android:name=".ui.PrivateChat.PrivateChatActivity"
             android:exported="true"
             android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme" />
-
+        <activity
+            android:name=".ui.Course.CreateCourseActivity"
+            android:exported="true"
+            android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme"/>
         <activity
             android:name=".MainActivity"
             android:exported="false"
@@ -34,6 +37,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

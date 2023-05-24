@@ -38,32 +38,32 @@ public class CreateCourseActivity extends AppCompatActivity {
 
     }
 
-    public void creatButton(View view){
-        String lesson = binding.lessonText.getText().toString();
-        String year = binding.yearText.getText().toString();
-        FirebaseUser user = auth.getCurrentUser();
-        String email = user.getEmail();
-
-        HashMap<String, Object> courseData = new HashMap<>();
-        courseData.put("lesson", lesson);
-        courseData.put("year", year);
-        courseData.put("usermail", email);
-        courseData.put("date", FieldValue.serverTimestamp());
-        firebaseFirestore.collection("coursePost").add(courseData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Intent intent = new Intent(CreateCourseActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CreateCourseActivity.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
-            }
-        });
-
-    }
+//    public void creatButton(View view){
+//        String lesson = binding.lessonText.getText().toString();
+//        String year = binding.yearText.getText().toString();
+//        FirebaseUser user = auth.getCurrentUser();
+//        String email = user.getEmail();
+//
+//        HashMap<String, Object> courseData = new HashMap<>();
+//        courseData.put("lesson", lesson);
+//        courseData.put("year", year);
+//        courseData.put("usermail", email);
+//        courseData.put("date", FieldValue.serverTimestamp());
+//        firebaseFirestore.collection("coursePost").add(courseData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//            @Override
+//            public void onSuccess(DocumentReference documentReference) {
+//                Intent intent = new Intent(CreateCourseActivity.this, MainActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(CreateCourseActivity.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//    }
 
 
 

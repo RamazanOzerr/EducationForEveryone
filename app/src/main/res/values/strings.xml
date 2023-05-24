@@ -13,4 +13,6 @@
     <string name="button_save">SAVE</string>
     <string name="button_logout">LOG OUT</string>
     <string name="button_send_message">SEND MESSAGE</string>
+    <string name="button_show_profile">SHOW PROFİLE</string>
+
 </resources>

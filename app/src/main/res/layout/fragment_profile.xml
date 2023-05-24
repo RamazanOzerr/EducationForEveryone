@@ -25,11 +25,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/shape_usrprofile"
         >
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/text_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:text="Fatih Terim"
@@ -55,6 +57,7 @@
             android:id="@+id/text_skills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_bio"
             android:text="italyanca, futbol, Galatasaray, am"
@@ -69,10 +72,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_logout"
             app:layout_constraintTop_toBottomOf="@+id/text_skills"
             android:text="@string/button_save"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/electricblue"
             android:layout_marginTop="20dp"
             />
 
@@ -80,11 +83,11 @@
             android:id="@+id/button_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_save"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_save"
+            app:layout_constraintTop_toBottomOf="@+id/text_skills"
             android:text="@string/button_logout"
-            android:backgroundTint="@color/blue_green"
+            android:backgroundTint="#CBFF0000"
             android:layout_marginTop="20dp"
             />
 
