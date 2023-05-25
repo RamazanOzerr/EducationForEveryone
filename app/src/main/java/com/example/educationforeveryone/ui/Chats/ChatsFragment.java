@@ -1,5 +1,6 @@
 package com.example.educationforeveryone.ui.Chats;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -40,6 +41,12 @@ public class ChatsFragment extends Fragment {
         View root = binding.getRoot();
         init();
 
+          ProgressDialog progress = new ProgressDialog(getContext());
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setIcon(R.drawable.ic_loading);
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
         chatsViewModel.getChats().observe(getViewLifecycleOwner(), new Observer<List<ChatModel>>() {
             @Override
             public void onChanged(List<ChatModel> chatModels) {
@@ -47,6 +54,7 @@ public class ChatsFragment extends Fragment {
                 chatModelList.addAll(chatModels);
                 adapter = new ChatAdapter(chatModelList, getActivity(), getContext());
                 binding.recyclerViewChatsFragment.setAdapter(adapter);
+                progress.dismiss();
             }
         });
 

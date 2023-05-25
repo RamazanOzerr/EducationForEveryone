@@ -53,7 +53,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> im
         }
 
         holder.constraint_chat_item.setOnClickListener(view1 -> {
-            activity.startActivity(new Intent(context, PrivateChatActivity.class));
+            Intent intent = new Intent(context, PrivateChatActivity.class);
+            intent.putExtra("otherUser", chatModelList.get(position).getUserId());
+            activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }

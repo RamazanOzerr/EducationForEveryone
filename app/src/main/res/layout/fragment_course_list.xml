@@ -11,14 +11,14 @@
 
         >
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_chats_fragment"
+            android:id="@+id/toolbar_courses_fragment"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/white"
             app:title="Course"
             app:titleTextColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_chats"
+            app:menu="@menu/menu_courses"
             />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,6 +35,16 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_addcourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_green"
+        android:src="@drawable/ic_add"
+        tools:ignore="ContentDescription"
+        app:layout_anchor="@id/recyclerView_chats_fragment"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="15dp"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

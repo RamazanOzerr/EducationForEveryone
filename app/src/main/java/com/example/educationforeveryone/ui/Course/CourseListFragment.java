@@ -1,17 +1,26 @@
 package com.example.educationforeveryone.ui.Course;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.educationforeveryone.R;
 import com.example.educationforeveryone.databinding.FragmentCourseListBinding;
+import com.google.android.material.appbar.MaterialToolbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +37,7 @@ public class CourseListFragment extends Fragment {
         View root = binding.getRoot();
         CourseViewModel courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
         init();
-       courseViewModel.getCourses().observe(getViewLifecycleOwner(), courseModels -> {
+        courseViewModel.getCourses().observe(getViewLifecycleOwner(), courseModels -> {
            courseList.clear();
            courseList.addAll(courseModels);
            courseAdapter = new CourseAdapter(courseList, getActivity(), getContext());
@@ -43,11 +52,45 @@ public class CourseListFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.recyclerViewChatsFragment.setLayoutManager(layoutManager);
 
-//        MaterialToolbar toolbar = binding.toolbarChatsFragment;
-//        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        binding.floatingButtonAddcourse.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), CreateCourseActivity.class));
+        });
+        MaterialToolbar toolbar = binding.toolbarCoursesFragment;
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 //
     }
 
+    // call onCreateOptionsMenu
+    //todo: menu nun null gelmesinden kaynaklanan hatadan ötürü burayı yoruma alıyorum
+    //todo:
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        setHasOptionsMenu(true);
+//        super.onCreate(savedInstanceState);
+//    }
+
+    // set search feature
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem searchItem = menu.findItem(R.id.search_courses);
+        System.out.println(menu.hasVisibleItems());
+        System.out.println(menu.getItem(0));
+        searchItem.getItemId();
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                courseAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
+    }
 
 
 //

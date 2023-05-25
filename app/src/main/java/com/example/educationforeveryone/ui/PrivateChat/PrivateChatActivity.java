@@ -97,17 +97,19 @@ public class PrivateChatActivity extends AppCompatActivity {
 
     private void init(){
 
-        //        otherUser = getIntent().getStringExtra("otherUser");
-//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(firebaseUser != null){
-//            currUser = firebaseUser.getUid();
-//        }else{
-//            //todo: user giriş yapmamış gibi gözüküyor, yeniden giriş yapmasının bir yolunu bul
-//            // Zaman aşımına uğradı gibi bir şey söyleyip yeniden giriş yapmasını isteyebiliriz
-//            currUser = "";
-//        }
-        currUser = "terim";
-        otherUser = "fatih";
+        otherUser = getIntent().getStringExtra("otherUser");
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser != null){
+            currUser = firebaseUser.getUid();
+        }else{
+            //todo: user giriş yapmamış gibi gözüküyor, yeniden giriş yapmasının bir yolunu bul
+            // Zaman aşımına uğradı gibi bir şey söyleyip yeniden giriş yapmasını isteyebiliriz
+            currUser = "";
+        }
+//        currUser = "terim";
+//        otherUser = "fatih";
+        System.out.println("other user:  "+otherUser);
+        System.out.println("curr user: "+currUser);
         messageList = new ArrayList<>();
         image_back_privatechat = findViewById(R.id.image_back_privatechat);
         swipe_to_refresh_privatechat = findViewById(R.id.swipe_to_refresh_privatechat);
@@ -173,7 +175,9 @@ public class PrivateChatActivity extends AppCompatActivity {
         });
 
         linear_privatechat.setOnClickListener(view -> {
-            startActivity(new Intent(this, UserProfileActivity.class));
+            Intent intent = new Intent(this, UserProfileActivity.class);
+            intent.putExtra("otherUser", otherUser);
+            startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }

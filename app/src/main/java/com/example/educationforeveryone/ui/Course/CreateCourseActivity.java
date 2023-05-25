@@ -2,13 +2,17 @@ package com.example.educationforeveryone.ui.Course;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.educationforeveryone.MainActivity;
+import com.example.educationforeveryone.R;
 import com.example.educationforeveryone.databinding.ActivityCreateCourseBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.r0adkll.slidr.Slidr;
 
 import java.util.HashMap;
 
@@ -33,12 +38,13 @@ public class CreateCourseActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         auth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
-
+        Slidr.attach(this);
 
     }
 
-//    public void creatButton(View view){
+
+
+    //    public void creatButton(View view){
 //        String lesson = binding.lessonText.getText().toString();
 //        String year = binding.yearText.getText().toString();
 //        FirebaseUser user = auth.getCurrentUser();

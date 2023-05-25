@@ -10,8 +10,8 @@ public class UserProfileViewModel extends ViewModel {
 
     private final MutableLiveData<UserProfileModel> liveData;
 
-    public UserProfileViewModel(){
-        UserProfileRepository repository = new UserProfileRepository();
+    public UserProfileViewModel(String otherUser){
+        UserProfileRepository repository = new UserProfileRepository(otherUser);
         liveData = repository.getLiveData();
     }
 

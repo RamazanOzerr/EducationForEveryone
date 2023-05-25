@@ -8,12 +8,15 @@ import android.os.Bundle;
 
 import com.example.educationforeveryone.R;
 import com.example.educationforeveryone.databinding.ActivityUserProfileBinding;
+import com.example.educationforeveryone.ui.PrivateChat.MessageViewModel;
+import com.example.educationforeveryone.ui.PrivateChat.ViewModelFactory;
 import com.r0adkll.slidr.Slidr;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    ActivityUserProfileBinding binding;
-    UserProfileViewModel viewModel;
+    private ActivityUserProfileBinding binding;
+    private UserProfileViewModel viewModel;
+    private String otherUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,11 @@ public class UserProfileActivity extends AppCompatActivity {
         binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+//        otherUser = ""; //todo: debug için böyle sonra siliyoruz
+        otherUser = getIntent().getStringExtra("otherUser");
+
+        viewModel = new ViewModelProvider(this,
+                new UserProfileViewModelFactory(otherUser)).get(UserProfileViewModel.class);
         viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
         viewModel.getData().observe(this, this::updateData);
 
@@ -36,4 +44,6 @@ public class UserProfileActivity extends AppCompatActivity {
         }
         binding.textSkillsProfile.setText(temp);
     }
+
+
 }

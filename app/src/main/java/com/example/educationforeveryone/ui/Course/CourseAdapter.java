@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -13,13 +15,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.educationforeveryone.R;
+import com.example.educationforeveryone.ui.Chats.ChatModel;
 import com.example.educationforeveryone.ui.CourseInfo.CourseInfoActivity;
 import com.example.educationforeveryone.ui.UserProfile.UserProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder> {
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder> implements Filterable {
 
     private List<CourseModel> courseModelList;
 
@@ -82,7 +85,38 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
 
     }
 
+    public Filter getFilter(){
+        return courseFilter;
+    }
 
+    private Filter courseFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<CourseModel> filteredList = new ArrayList<>();
+            if(charSequence == null || charSequence.length() == 0){
+                filteredList.addAll(courseModelListFull);
+            }else{
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+
+                for(CourseModel item : courseModelListFull){
+                    if(item.getClass_str().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            courseModelList.clear();
+            courseModelList.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
 
 }
