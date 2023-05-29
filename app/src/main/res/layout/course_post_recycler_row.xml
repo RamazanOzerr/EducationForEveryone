@@ -17,10 +17,10 @@
     >
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/recyclerViewUserLessonText"
+        android:id="@+id/text_courseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="lesson"
+        android:text="Course Name"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold|italic"
@@ -28,39 +28,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_publisher"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/recyclerViewUserYearText"
+        android:id="@+id/text_publisher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textStyle="bold|italic"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="class"
+        android:text="Publisher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewUserLessonText"
+        app:layout_constraintTop_toBottomOf="@id/text_courseName"
+        app:layout_constraintBottom_toBottomOf="parent"
 
         />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/recyclerViewUserEmailText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:textStyle="bold|italic"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewUserYearText"
-        />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/recyclerViewUserEmailText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textStyle="bold|italic"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="email"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/recyclerViewUserYearText"-->
+<!--        />-->
 
 
 

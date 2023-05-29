@@ -7,15 +7,17 @@ import java.util.List;
 
 public class CourseViewModel extends ViewModel {
 
-    private final MutableLiveData<List<CourseModel>> liveData;
-
+    private MutableLiveData<List<CourseModel>> liveData;
+    private final CourseRepository repository;
 
     public CourseViewModel() {
-
-        CourseRepository repository = new CourseRepository();
+        repository = new CourseRepository();
         liveData = repository.getCourses();
     }
 
-    public MutableLiveData<List<CourseModel>> getCourses() {return liveData;}
+    public MutableLiveData<List<CourseModel>> getCourses() {
+        System.out.println("livedata: "+liveData);
+        return liveData;
+    }
 
 }

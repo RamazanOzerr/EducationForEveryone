@@ -53,9 +53,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
 
-    holder.text_view_email.setText(courseModelList.get(position).getEmail_str());
-    holder.text_view_lesson.setText(courseModelList.get(position).getLesson_str());
-    holder.text_view_class.setText(courseModelList.get(position).getClass_str());
+    holder.text_courseName.setText(courseModelList.get(position).getCourseName());
+    holder.text_publisher.setText(courseModelList.get(position).getPublisher());
 
     holder.constraint_course_item.setOnClickListener(view1 -> {
         activity.startActivity(new Intent(context, CourseInfoActivity.class));
@@ -71,14 +70,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
 
     public static class Viewholder extends RecyclerView.ViewHolder {
 
-        private final AppCompatTextView text_view_lesson,text_view_email,text_view_class;
+        private final AppCompatTextView text_courseName, text_publisher;
         private final ConstraintLayout constraint_course_item;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            text_view_class = itemView.findViewById(R.id.recyclerViewUserYearText);
-            text_view_lesson = itemView.findViewById(R.id.recyclerViewUserLessonText);
-            text_view_email = itemView.findViewById(R.id.recyclerViewUserEmailText);
+            text_publisher = itemView.findViewById(R.id.text_publisher);
+            text_courseName = itemView.findViewById(R.id.text_courseName);
+//            text_view_email = itemView.findViewById(R.id.recyclerViewUserEmailText);
             constraint_course_item = itemView.findViewById(R.id.constraint_course_item);
         }
 
@@ -99,7 +98,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
                 String filterPattern = charSequence.toString().toLowerCase().trim();
 
                 for(CourseModel item : courseModelListFull){
-                    if(item.getClass_str().toLowerCase().contains(filterPattern)){
+                    if(item.getCourseName().toLowerCase().contains(filterPattern)){
                         filteredList.add(item);
                     }
                 }

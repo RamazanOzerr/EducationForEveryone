@@ -1,35 +1,26 @@
 package com.example.educationforeveryone.ui.Course;
 
 public class CourseModel {
-    private  String lesson_str,class_str,email_str;
+    private  String publisher, courseName;
 
-    public CourseModel(String lesson_str, String class_str, String email_str) {
-        this.lesson_str = lesson_str;
-        this.class_str = class_str;
-        this.email_str = email_str;
+    public CourseModel(String publisher, String courseName) {
+        this.publisher = publisher;
+        this.courseName = courseName;
     }
 
-    public String getLesson_str() {
-        return lesson_str;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setLesson_str(String lesson_str) {
-        this.lesson_str = lesson_str;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
-    public String getClass_str() {
-        return class_str;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setClass_str(String class_str) {
-        this.class_str = class_str;
-    }
-
-    public String getEmail_str() {
-        return email_str;
-    }
-
-    public void setEmail_str(String email_str) {
-        this.email_str = email_str;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 }

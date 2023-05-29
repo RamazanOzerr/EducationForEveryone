@@ -2,14 +2,24 @@ package com.example.educationforeveryone.ui.CourseInfo;
 
 public class CourseInfoModel {
 
-    private String publisher, bio, courseName, date, category;
+    private String publisher, bio, courseName, date, category, publisher_id;
 
-    public CourseInfoModel(String publisher, String bio, String courseName, String date, String category) {
+    public CourseInfoModel(String publisher, String bio, String courseName,
+                           String date, String category, String publisher_id) {
         this.publisher = publisher;
         this.bio = bio;
         this.courseName = courseName;
         this.date = date;
         this.category = category;
+        this.publisher_id = publisher_id;
+    }
+
+    public String getPublisher_id() {
+        return publisher_id;
+    }
+
+    public void setPublisher_id(String publisher_id) {
+        this.publisher_id = publisher_id;
     }
 
     public String getPublisher() {

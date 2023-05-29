@@ -14,17 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EducationForEveryone"
         tools:targetApi="31">
+
         <activity
             android:name=".ui.SignUpSetProfileActivity"
             android:exported="true"
             android:parentActivityName=".ui.SignUpActivity"
-            android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme"/>
+            android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme" />
         <activity
             android:name=".ui.SignUpActivity"
             android:exported="false"
             android:parentActivityName=".LoginActivity"
-            android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme"
-            />
+            android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme" />
         <activity
             android:name=".ui.CourseInfo.CourseInfoActivity"
             android:exported="false"
@@ -38,7 +38,7 @@
             android:exported="true"
             android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme" />
         <activity
-            android:name=".ui.Course.CreateCourseActivity"
+            android:name=".ui.CreateCourse.CreateCourseActivity"
             android:exported="true"
             android:theme="@style/Theme.EducationForEveryone.SlidrActivityTheme" />
         <activity

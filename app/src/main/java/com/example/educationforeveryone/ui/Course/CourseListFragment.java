@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -19,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.educationforeveryone.R;
 import com.example.educationforeveryone.databinding.FragmentCourseListBinding;
+import com.example.educationforeveryone.ui.CreateCourse.CreateCourseActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
@@ -40,8 +40,9 @@ public class CourseListFragment extends Fragment {
         courseViewModel.getCourses().observe(getViewLifecycleOwner(), courseModels -> {
            courseList.clear();
            courseList.addAll(courseModels);
+            System.out.println("models.."+courseModels);
            courseAdapter = new CourseAdapter(courseList, getActivity(), getContext());
-            binding.recyclerViewChatsFragment.setAdapter(courseAdapter);
+           binding.recyclerViewChatsFragment.setAdapter(courseAdapter);
        });
 
         return root;

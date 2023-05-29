@@ -1,6 +1,14 @@
 package com.example.educationforeveryone.ui.Course;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,36 +19,39 @@ public class CourseRepository {
     private final MutableLiveData<List<CourseModel>> liveData;
     private final List<CourseModel> courseModelList;
 
+    private DatabaseReference reference;
 
     public CourseRepository() {
         this.liveData = new MutableLiveData<>();
         this.courseModelList = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference();
     }
 
 
     public MutableLiveData<List<CourseModel>> getCourses(){
 
-        CourseModel courseModel = new CourseModel("Matematik","963","deneme@gmail.com");
-        CourseModel courseModel1 = new CourseModel("türkçe","852","deneme2@gmail.com");
-        CourseModel courseModel2 = new CourseModel("ingilzice","741","deneme3@gmail.com");
-        CourseModel courseModel3 = new CourseModel("fen bilgisi","789","deneme4@gmail.com");
-        CourseModel courseModel4 = new CourseModel("inkilap","456","deneme5@gmail.com");
-        CourseModel courseModel5 = new CourseModel("haya bilgisi","123","deneme6@gmail.com");
+        // courseName ve publisher
 
-        courseModelList.add(courseModel2);
-        courseModelList.add(courseModel1);
-        courseModelList.add(courseModel);
-        courseModelList.add(courseModel4);
-        courseModelList.add(courseModel5);
-        courseModelList.add(courseModel);
-        courseModelList.add(courseModel3);
-        courseModelList.add(courseModel);
-        courseModelList.add(courseModel1);
-        courseModelList.add(courseModel4);
-        courseModelList.add(courseModel3);
-        courseModelList.add(courseModel);
-        courseModelList.add(courseModel3);
-        courseModelList.add(courseModel);
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String publisher = dataSnapshot.child("publisher").getValue().toString();
+                    String courseName = dataSnapshot.child("courseName").getValue().toString();
+                    CourseModel courseModel = new CourseModel(publisher, courseName);
+                    courseModelList.add(courseModel);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+
+        Query query = reference.child("Course");
+        query.addListenerForSingleValueEvent(valueEventListener);
+
 
 
         liveData.setValue(courseModelList);

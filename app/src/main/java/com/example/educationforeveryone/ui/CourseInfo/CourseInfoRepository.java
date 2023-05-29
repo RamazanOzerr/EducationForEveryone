@@ -20,7 +20,7 @@ public class CourseInfoRepository {
 
         CourseInfoModel course = new CourseInfoModel("fatih terim", "tanrı",
                 "how to fuck fenerbahçe properly",
-                "31.31.3131","adult");
+                "31.31.3131","adult", "w7dBn3NPEhdGC94yWNmeN1vnt7I3");
 
         liveData.setValue(course);
     }
