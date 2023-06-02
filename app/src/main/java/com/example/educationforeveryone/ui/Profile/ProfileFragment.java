@@ -5,21 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.educationforeveryone.LoginActivity;
 import com.example.educationforeveryone.R;
-import com.example.educationforeveryone.databinding.FragmentHomeBinding;
 import com.example.educationforeveryone.databinding.FragmentProfileBinding;
-import com.example.educationforeveryone.ui.Home.HomeViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +24,6 @@ import java.util.List;
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
-    private ProfileFragmentViewModel viewModel;
     private DatabaseReference reference;
     private FirebaseUser user;
 
@@ -42,14 +34,17 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         user = FirebaseAuth.getInstance().getCurrentUser();
-        viewModel = new ViewModelProvider(this).get(ProfileFragmentViewModel.class);
+        ProfileFragmentViewModel viewModel = new ViewModelProvider(this)
+                .get(ProfileFragmentViewModel.class);
 
-        viewModel.getData().observe(getViewLifecycleOwner(), new Observer<ProfileModel>() {
-            @Override
-            public void onChanged(ProfileModel profileModel) {
-                updateData(profileModel);
-            }
-        });
+        if(savedInstanceState != null){
+            String saved = savedInstanceState.getString("saved");
+            Toast.makeText(getContext(),saved,Toast.LENGTH_SHORT).show();
+            binding.textSkills.setText(saved);
+        }else{
+
+            viewModel.getData().observe(getViewLifecycleOwner(), this::updateData);
+        }
 
         setListeners();
 
@@ -103,15 +98,15 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void cleanEditTexts(){
-        binding.textUsername.setText("");
-        binding.textBio.setText("");
-        binding.textSkills.setText("");
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("saved", binding.textSkills.getText().toString());
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        cleanEditTexts();
+        binding = null;
     }
 }

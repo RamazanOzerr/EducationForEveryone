@@ -46,7 +46,8 @@ public class ProfileRepository {
 
         Query query = FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        query.addValueEventListener(valueEventListener);
+        query.addListenerForSingleValueEvent(valueEventListener);
+//        query.removeEventListener(valueEventListener);
 
 
     }
