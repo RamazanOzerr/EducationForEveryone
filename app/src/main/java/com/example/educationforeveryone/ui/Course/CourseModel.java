@@ -1,11 +1,20 @@
 package com.example.educationforeveryone.ui.Course;
 
 public class CourseModel {
-    private  String publisher, courseName;
+    private  String publisher, courseName, courseId;
 
-    public CourseModel(String publisher, String courseName) {
+    public CourseModel(String publisher, String courseName, String courseId) {
         this.publisher = publisher;
         this.courseName = courseName;
+        this.courseId = courseId;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getPublisher() {

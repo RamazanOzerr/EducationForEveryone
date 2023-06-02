@@ -14,6 +14,9 @@ public class CourseInfoModel {
         this.publisher_id = publisher_id;
     }
 
+    public CourseInfoModel(){}
+
+
     public String getPublisher_id() {
         return publisher_id;
     }

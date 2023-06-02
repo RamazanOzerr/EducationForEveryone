@@ -7,6 +7,8 @@ public class ProfileModel {
     private String username, bio;
     private List<String> skills;
 
+    public ProfileModel(){}
+
     public ProfileModel(String username, String bio, List<String> skills) {
         this.username = username;
         this.bio = bio;

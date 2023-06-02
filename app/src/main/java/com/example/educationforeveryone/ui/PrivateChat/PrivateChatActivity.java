@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,10 +43,11 @@ public class PrivateChatActivity extends AppCompatActivity {
     private RecyclerView recyclerView_privatechat;
     private AppCompatEditText edittext_privatechat;
     private AppCompatImageView image_send_privatechat;
+    private AppCompatTextView text_username_privatechat;
 
 
     private MessageViewModel viewModel;
-    private String currUser, otherUser;
+    private String currUser, otherUser, username;
 
     private MessageAdapter adapter;
     private List<MessageModel> messageList;
@@ -80,6 +82,7 @@ public class PrivateChatActivity extends AppCompatActivity {
             }
         });
 
+
         setListeners();
         Slidr.attach(this);
     }
@@ -98,6 +101,7 @@ public class PrivateChatActivity extends AppCompatActivity {
     private void init(){
 
         otherUser = getIntent().getStringExtra("otherUser");
+        username = getIntent().getStringExtra("username");
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser != null){
             currUser = firebaseUser.getUid();
@@ -117,6 +121,7 @@ public class PrivateChatActivity extends AppCompatActivity {
         edittext_privatechat = findViewById(R.id.edittext_privatechat);
         image_send_privatechat = findViewById(R.id.image_send_privatechat);
         linear_privatechat = findViewById(R.id.linear_privatechat);
+        text_username_privatechat = findViewById(R.id.text_username_privatechat);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView_privatechat.setLayoutManager(layoutManager);
@@ -124,13 +129,12 @@ public class PrivateChatActivity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Messages");
 
-        swipe_to_refresh_privatechat.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                //todo: refresh işlemini yap
-                swipe_to_refresh_privatechat.setRefreshing(false);
-            }
+        swipe_to_refresh_privatechat.setOnRefreshListener(() -> {
+            //todo: refresh işlemini yap
+            swipe_to_refresh_privatechat.setRefreshing(false);
         });
+
+        text_username_privatechat.setText(username);
     }
 
     private void sendMessage(MessageModel message){

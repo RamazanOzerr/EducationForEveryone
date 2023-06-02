@@ -38,9 +38,9 @@ public class CourseRepository {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     String publisher = dataSnapshot.child("publisher").getValue().toString();
                     String courseName = dataSnapshot.child("courseName").getValue().toString();
-                    CourseModel courseModel = new CourseModel(publisher, courseName);
+                    CourseModel courseModel = new CourseModel(publisher, courseName, dataSnapshot.getKey());
                     courseModelList.add(courseModel);
-                }
+                }liveData.setValue(courseModelList);
             }
 
             @Override
@@ -54,10 +54,8 @@ public class CourseRepository {
 
 
 
-        liveData.setValue(courseModelList);
 
         return liveData;
-
 
 
     }

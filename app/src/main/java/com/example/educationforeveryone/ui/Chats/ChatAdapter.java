@@ -55,9 +55,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> im
         holder.constraint_chat_item.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, PrivateChatActivity.class);
             intent.putExtra("otherUser", chatModelList.get(position).getUserId());
+            intent.putExtra("username",chatModelList.get(position).getUsername());
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
+
+        if(chatModelList.size() == 0){
+            holder.text_username_chat_item.setText("there is no chat yet");
+        }
     }
 
     @Override

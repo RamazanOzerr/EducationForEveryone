@@ -1,25 +1,24 @@
 package com.example.educationforeveryone.ui.CourseInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.educationforeveryone.R;
 import com.example.educationforeveryone.databinding.ActivityCourseInfoBinding;
-import com.example.educationforeveryone.databinding.ActivityUserProfileBinding;
-import com.example.educationforeveryone.ui.CreateCourse.CreateCourseActivity;
+import com.example.educationforeveryone.ui.PrivateChat.PrivateChatActivity;
 import com.example.educationforeveryone.ui.UserProfile.UserProfileActivity;
-import com.example.educationforeveryone.ui.UserProfile.UserProfileViewModel;
 import com.r0adkll.slidr.Slidr;
 
 public class CourseInfoActivity extends AppCompatActivity {
 
     ActivityCourseInfoBinding binding;
     CourseInfoViewModel viewModel;
-    private String otherUser;
+    private String otherUser, username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +26,17 @@ public class CourseInfoActivity extends AppCompatActivity {
         binding = ActivityCourseInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        viewModel = new ViewModelProvider(this).get(CourseInfoViewModel.class);
+        String courseId = getIntent().getStringExtra("courseId");
 
-        viewModel.getData().observe(this, new Observer<CourseInfoModel>() {
-            @Override
-            public void onChanged(CourseInfoModel courseInfoModel) {
-                updateData(courseInfoModel);
-                otherUser = courseInfoModel.getPublisher_id();
-            }
+        viewModel = new ViewModelProvider(this,
+                new CourseInfoViewModelFactory(courseId)).get(CourseInfoViewModel.class);
+
+        viewModel.getData().observe(this, courseInfoModel -> {
+            updateData(courseInfoModel);
+            otherUser = courseInfoModel.getPublisher_id();
+            username = courseInfoModel.getPublisher();
+            Toast.makeText(CourseInfoActivity.this,
+                    "user:" + otherUser,Toast.LENGTH_SHORT).show();
         });
 
         setListeners();
@@ -42,24 +44,29 @@ public class CourseInfoActivity extends AppCompatActivity {
     }
 
     private void updateData(CourseInfoModel courseInfoModel){
-
+        binding.textCourseName.setText(courseInfoModel.getCourseName());
+        binding.textBio.setText(courseInfoModel.getBio());
+        binding.textCategory.setText(courseInfoModel.getCategory());
     }
 
-
     private void setListeners(){
-        binding.pImage.setOnClickListener(view -> {
+        binding.msgBtn.setOnClickListener(view -> {
             if(otherUser != null){
-                Intent intent = new Intent(this, UserProfileActivity.class);
+                Intent intent = new Intent(this, PrivateChatActivity.class);
                 intent.putExtra("otherUser", otherUser);
+                intent.putExtra("username",username);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
-        binding.likeImageBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, CreateCourseActivity.class);
+        binding.visitBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, UserProfileActivity.class);
+            intent.putExtra("otherUser", otherUser);
+            intent.putExtra("username",username);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
+
     }
 }

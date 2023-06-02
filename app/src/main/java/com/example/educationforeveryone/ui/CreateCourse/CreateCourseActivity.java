@@ -121,9 +121,9 @@ public class CreateCourseActivity extends AppCompatActivity {
             }
         });
         //todo: firebase bağlantısı
+        String courseID = reference.push().getKey();
         CourseInfoModel courseInfoModel = new CourseInfoModel(publisher[0],
                 bio, courseName, getTime(), category, auth.getUid());
-        String courseID = reference.push().getKey();
         if (courseID != null){
             reference.child(courseID).setValue(courseInfoModel).addOnSuccessListener(unused -> {
                 Toast.makeText(this,

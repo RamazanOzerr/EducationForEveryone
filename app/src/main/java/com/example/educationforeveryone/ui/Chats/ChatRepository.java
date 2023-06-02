@@ -44,7 +44,7 @@ public class ChatRepository {
 //                    getUsername();
 
                     FirebaseDatabase.getInstance().getReference("Users")
-                            .child("w7dBn3NPEhdGC94yWNmeN1vnt7I3") //todo: otherUser
+                            .child(otherUser) //todo: otherUser
                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -52,6 +52,7 @@ public class ChatRepository {
                                             .getValue().toString();
                                     ChatModel chatModel = new ChatModel(username, otherUser);
                                     chatModelList.add(chatModel);
+                                    liveData.setValue(chatModelList);
                                 }
 
                                 @Override
@@ -59,7 +60,7 @@ public class ChatRepository {
 
                                 }
                             });
-                }liveData.setValue(chatModelList);
+                }
             }
 
             @Override
@@ -68,7 +69,7 @@ public class ChatRepository {
             }
         };
 
-        Query query = reference.child("Messages").child("fatih"); //todo: user.getUid()
+        Query query = reference.child("Messages").child(user.getUid()); //todo: user.getUid()
         System.out.println("burası olsun çalıştı de aq");
         query.addListenerForSingleValueEvent(valueEventListener);
         System.out.println("ama neden benn..");

@@ -57,7 +57,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
     holder.text_publisher.setText(courseModelList.get(position).getPublisher());
 
     holder.constraint_course_item.setOnClickListener(view1 -> {
-        activity.startActivity(new Intent(context, CourseInfoActivity.class));
+        Intent intent = new Intent(context, CourseInfoActivity.class);
+        intent.putExtra("courseId",courseModelList.get(position).getCourseId());
+        activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     });
 

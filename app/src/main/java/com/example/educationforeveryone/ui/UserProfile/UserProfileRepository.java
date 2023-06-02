@@ -48,7 +48,7 @@ public class UserProfileRepository {
         };
 
         System.out.println("other user repos: "+otherUser);
-        Query query = reference.child("w7dBn3NPEhdGC94yWNmeN1vnt7I3"); //todo: otherUser
+        Query query = reference.child(otherUser); //todo: otherUser
         query.addListenerForSingleValueEvent(valueEventListener);
 
 //

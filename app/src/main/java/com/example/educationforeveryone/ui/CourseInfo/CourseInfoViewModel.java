@@ -10,8 +10,8 @@ public class CourseInfoViewModel extends ViewModel {
 
     private final MutableLiveData<CourseInfoModel> liveData;
 
-    public CourseInfoViewModel(){
-        CourseInfoRepository repository = new CourseInfoRepository();
+    public CourseInfoViewModel(String courseId){
+        CourseInfoRepository repository = new CourseInfoRepository(courseId);
         liveData = repository.getLiveData();
     }
 

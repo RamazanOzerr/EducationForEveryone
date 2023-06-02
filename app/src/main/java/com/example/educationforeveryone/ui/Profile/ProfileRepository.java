@@ -46,15 +46,8 @@ public class ProfileRepository {
 
         Query query = FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        query.addListenerForSingleValueEvent(valueEventListener);
+        query.addValueEventListener(valueEventListener);
 
-//        List<String> skills = new ArrayList<>();
-//        skills.add("futbol");
-//        skills.add("am");
-//        skills.add("italyanca");
-//        skills.add("fenerbahçe sikmek");
-//        ProfileModel profileModel = new ProfileModel("Fatih Terim","Türkiyenin en taşşaklı tanrısı",skills);
-//        liveData.setValue(profileModel);
 
     }
 
